@@ -1,0 +1,26 @@
+{
+  "name": "yh-products-company",
+  "version": "1.0.0",
+  "description": "Buying products",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lotus-1/YH-Products-company.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lotus-1/YH-Products-company/issues"
+  },
+  "homepage": "https://github.com/lotus-1/YH-Products-company#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
