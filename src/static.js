@@ -63,14 +63,14 @@ module.exports = [{
 },
 {
   id: 9,
-  name: 'Cups 202',
+  name: 'Cups 2oz',
   category: 'kitchen',
   quantity: 18,
   price: 3
 },
 {
   id: 10,
-  name: 'Cups 602',
+  name: 'Cups 6oz',
   category: 'kitchen',
   quantity: 15,
   price: 7
