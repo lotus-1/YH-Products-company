@@ -1,7 +1,7 @@
 const dbConnection = require('../database/db_connection.js');
 
-const getData = cb => {
-  dbConnection.query('SELECT * FROM users', (err, res) => {
+const getCustomersData = cb => {
+  dbConnection.query('SELECT * FROM customers', (err, res) => {
     if (err) return cb(err);
     cb(null, res.rows);
   });
