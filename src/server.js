@@ -1,5 +1,5 @@
 const http = require('http');
-const router = require('./router');
+const router = require('./router.js');
 
 const hostname = process.env.PORT || 'localhost';
 const port = process.env.PORT || 5000;

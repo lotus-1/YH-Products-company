@@ -5,16 +5,16 @@ DROP TABLE IF EXISTS customersProducts CASCADE;
 
 CREATE TABLE customers (
   id SERIAL PRIMARY KEY,
-  full_name VARCHAR(100) NOT NULL,
-  adress TEXT NOT NULL,
-  phone  VARCHAR(10) NOT NULL
+  Full_name VARCHAR(100) NOT NULL,
+  Address TEXT NOT NULL,
+  Phone  VARCHAR(10) NOT NULL
 );
 
-INSERT INTO customers (full_name, adress, phone) VALUES
+INSERT INTO customers (Full_name, Address, Phone) VALUES
   ('Hoda Mansoud', 'Osfia', 0501234567);
-  INSERT INTO customers (full_name, adress, phone) VALUES
+  INSERT INTO customers (Full_name, Address, Phone) VALUES
   ('Jasmine Badrih', 'Daliat El Carmel', 0598765432);
-  INSERT INTO customers (full_name, adress, phone) VALUES
+  INSERT INTO customers (Full_name, Address, Phone) VALUES
   ('Sahar Mansour', 'Osfia', 0524681357);
 
   CREATE TABLE products (
