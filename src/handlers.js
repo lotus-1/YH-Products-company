@@ -9,13 +9,13 @@ const postCustomersData = require('./queries/postCustomersData.js');
 const handlerHome = (request, response) => {
   const filePath = path.join(__dirname, '..', 'public', 'index.html');
   fs.readFile(filePath, (error, file) => {
+    if (error) {
     response.writeHead(500, { 'Content-Type': 'text/html' });
     response.end('<h1> Sorry, You have an Error </h1>');
-  }) else {
+  } else {
     response.writeHead(200, { 'Content-Type': 'text/html' });
     response.end(filePath);
-  };
-});
+  }
 
 const handlerPublic = (request, response, url) => {
   const extension = url.split('.')[1];
@@ -62,7 +62,8 @@ const handlerPostDB = ((request, response) => {
     });
   });
 });
-
+});
+};
 
 
 
