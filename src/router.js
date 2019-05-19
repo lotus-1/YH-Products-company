@@ -1,4 +1,4 @@
-const handlers = require("./handler");
+const handlers = require("./handlers");
 
 const router = (request, response) => {
   if (request.url === "/") {
@@ -11,8 +11,8 @@ const router = (request, response) => {
     handlers.handlerPostDB(request, response);
   } else {
     response.writeHead(404, { "Content-Type": "text/html" });
-    response.end("<h1> 404 , Page Not Found</h1>");
-  }
+    response.end("<h1> 404, Page Not Found</h1>");
+  };
 };
 
 module.exports = router;

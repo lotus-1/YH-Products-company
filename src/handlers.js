@@ -13,12 +13,9 @@ const handlerHome = (request, response) => {
     response.end('<h1> Sorry, You have an Error </h1>');
   }) else {
     response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.end(file);
-  } else {
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.end(file);
-  });
-};
+    response.end(filePath);
+  };
+});
 
 const handlerPublic = (request, response, url) => {
   const extension = url.split('.')[1];
