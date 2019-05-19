@@ -11,7 +11,7 @@ const handlerHome = (request, response) => {
   fs.readFile(filePath, (error, file) => {
     response.writeHead(500, { 'Content-Type': 'text/html' });
     response.end('<h1> Sorry, You have an Error </h1>');
-  } else {
+  }) else {
     response.writeHead(200, { 'Content-Type': 'text/html' });
     response.end(file);
   } else {
@@ -20,7 +20,7 @@ const handlerHome = (request, response) => {
   });
 };
 
-const publicHandler = (request, response, url) => {
+const handlerPublic = (request, response, url) => {
   const extension = url.split('.')[1];
   const extensionTypes = {
     html: 'text/html',
@@ -40,15 +40,34 @@ const publicHandler = (request, response, url) => {
   });
 };
 
-const handlerGetDb = (response) => {
-  console.log('this is the response in the handlerGetDB: ', response);
+const handlerGetDB = (response) => {
     getUserData((err, students) => {
-      console.log('this is the students : ', students);
       if (err) return serverError(err, response);
       response.writeHead(200, { 'Content-Type': 'application/json' });
       response.end(JSON.stringify(students));
     });
 };
+
+const handlerPostDB = ((request, response) => {
+  let data = '';
+  request.on('data', chunk => {
+    data += chunk;
+  });
+  request.on('end', () => {
+    const parseFullName = querystring.parse(data).full_name;
+    const parseAddress = querystring.parse(data).address;
+    const parsePhone = querystring.parse(data).phone;
+
+    postUserData(parseFullName, parseAddress, parsePhone, (err, res) => {
+      if (err) return serverError(err, response);
+      response.writeHead(302, { 'Location': '/' });
+      response.end(parseFullName,parseAddress, parsePhone);
+    });
+  });
+});
+
+
+
 
 module.exports = {
   handlerHome,
@@ -56,30 +75,3 @@ module.exports = {
   handlerGetDb,
   handlerPostDB
 }
-
-
-
-//
-// const handlerPostDB = ((request, response) => {
-//   console.log('this is the request url: ', request.url);
-//   let data = '';
-//   request.on('data', chunk => {
-//     data += chunk;
-//     console.log('this is the data after chunk : ', data.split('&'));
-//   });
-//   request.on('end', () => {
-//     // console.log('the data', data);
-//     const parseFirstName = querystring.parse(data).first_name;
-//     const parseLastName = querystring.parse(data).last_name;
-//     console.log('the parseData', parseFirstName);
-//     console.log('the parseData', parseLastName);
-//
-//     postUserData(parseFirstName, parseLastName, (err, res) => {
-//       console.log('res', res);
-//       if (err) return serverError(err, response);
-//       response.writeHead(302, { 'Location': '/' });
-//       response.end(parseFirstName,parseLastName);
-//     });
-//   });
-// });
-//
