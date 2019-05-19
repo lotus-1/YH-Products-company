@@ -9,18 +9,16 @@ const postCustomersData = require('./queries/postCustomersData.js');
 const handlerHome = (request, response) => {
   const filePath = path.join(__dirname, '..', 'public', 'index.html');
   fs.readFile(filePath, (error, file) => {
-    response.writeHead(500, { 'Content-Type': 'text/html' });
-    response.end('<h1> Sorry, You have an Error </h1>');
-  } else {
+    if (error) {
+      response.writeHead(500, { 'Content-Type': 'text/html' });
+      response.end('<h1> Sorry, You have an Error </h1>');
+    } else {
     response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.end(file);
-  } else {
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.end(file);
-  });
-};
+    response.end(filePath);
+  };
+});
 
-const publicHandler = (request, response, url) => {
+const handlerPublic = (request, response, url) => {
   const extension = url.split('.')[1];
   const extensionTypes = {
     html: 'text/html',
@@ -50,17 +48,7 @@ const handlerGetDb = (response) => {
     });
 };
 
-module.exports = {
-  handlerHome,
-  handlerPublic,
-  handlerGetDb,
-  handlerPostDB
-}
-
-
-
-//
-// const handlerPostDB = ((request, response) => {
+// const handlerPostDb = ((request, response) => {
 //   console.log('this is the request url: ', request.url);
 //   let data = '';
 //   request.on('data', chunk => {
@@ -73,13 +61,18 @@ module.exports = {
 //     const parseLastName = querystring.parse(data).last_name;
 //     console.log('the parseData', parseFirstName);
 //     console.log('the parseData', parseLastName);
-//
-//     postUserData(parseFirstName, parseLastName, (err, res) => {
-//       console.log('res', res);
-//       if (err) return serverError(err, response);
-//       response.writeHead(302, { 'Location': '/' });
-//       response.end(parseFirstName,parseLastName);
+//         postUserData(parseFirstName, parseLastName, (err, res) => {
+//           console.log('res', res);
+//           if (err) return serverError(err, response);
+//           response.writeHead(302, { 'Location': '/' });
+//           response.end(parseFirstName,parseLastName);
+//         });
+//       });
 //     });
-//   });
-// });
-//
+}
+module.exports = {
+  handlerHome,
+  handlerPublic,
+  handlerGetDb
+  // handlerPostDb
+}
