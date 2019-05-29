@@ -9,7 +9,7 @@ const sql = fs.readFileSync(`${__dirname}/db_build.sql`).toString();
 
 dbConnection.query(sql, (err, res) => {
   if (err) throw err;
-  console.log("clients table created with result: ", res);
+  console.log("customers table created with result: ", res);
 });
 
 module.exports = runDbBuild;
