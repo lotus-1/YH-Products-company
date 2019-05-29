@@ -58,7 +58,11 @@ const handlerPostDB = (request, response) => {
     const parsePhone = querystring.parse(data).phone;
 
     postCustomersData(parseFullName, parseAddress, parsePhone, (err, res) => {
-      if (err) throw new Error("The postCustomersData have an Error ", err);
+      if (err) {
+        console.log("The postCustomersData have an Error: ", err);
+        // throw new Error("The postCustomersData have an Error: ", err);
+
+      }
       response.writeHead(302, { 'Location': '/' });
       response.end(parseFullName, parseAddress, parsePhone);
     });

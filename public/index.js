@@ -1,9 +1,9 @@
 const querystring = require('query-string');
 const fs = require('fs');
 const path = require('path');
-const productsList = path.readFile(__dirname, '..', 'src/static.js');
-const form = document.getElementsById('form');
-form.addEventListener('button', (event) => {
+// const productsList = path.readFile(__dirname, '..', 'src/static.js');
+const button = document.getElementsById('button');
+button.addEventListener('click', (event) => {
   event.preventDefault();
   fetch('/getCustomersData')
   .then((response) => {

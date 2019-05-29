@@ -5,7 +5,7 @@ require('dotenv').config();
 const DB_URL = process.env.DB_URL;
 
 if (!process.env.DB_URL)
-throw new Error('Enviroment variable DB_URL must be set, the error is: ', );
+throw new Error('Enviroment variable DB_URL must be set, the error is: ');
 
 const params = url.parse(DB_URL);
 const [username, password] = params.auth.split(':');
