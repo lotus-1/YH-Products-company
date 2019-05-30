@@ -98,7 +98,7 @@ module.exports = [{
 },
 {
   id: 14,
-  name: 'always',
+  name: 'toothbrush',
   category: 'bathroom',
   quantity: 25,
   price: 32
