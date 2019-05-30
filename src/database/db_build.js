@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+
 const dbConnection = require('./db_connection.js');
 
 if(!process.env.DB_URL) throw new Error('Enviroment varibal DB_URL must be sent!');
@@ -12,4 +13,8 @@ dbConnection.query(sql, (err, res) => {
   console.log("customers table created with result: ", res);
 });
 
-module.exports = runDbBuild;
+const runDbBuild = cb => dbConnection.query(sql, cb);
+module.exports = {
+runDbBuild,
+
+}
