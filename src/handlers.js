@@ -40,8 +40,14 @@ const handlerPublic = (request, response, url) => {
 };
 
 const handlerGetDB = response => {
+  console.log('12345');
   getCustomersData((err, customers) => {
-    if (err) throw new Error(" The getCustomersData have an ERROR: ", err);
+    if (err) {
+      console.log('this is the getCustomersData error: ', err);
+
+    }
+    // throw new Error(" The getCustomersData have an ERROR: ", err);
+    console.log('else statement in getCustomersData: ', customers);
     response.writeHead(200, { "Content-Type": "application/json" });
     response.end(JSON.stringify(customers));
   });
@@ -54,17 +60,17 @@ const handlerPostDB = (request, response) => {
   });
   request.on("end", () => {
     const parseFullName = querystring.parse(data).full_name;
-    const parseAddress = querystring.parse(data).address;
-    const parsePhone = querystring.parse(data).phone;
+    const parseaddress = querystring.parse(data).address;
+    const parsephone = querystring.parse(data).phone;
 
-    postCustomersData(parseFullName, parseAddress, parsePhone, (err, res) => {
+    postCustomersData(parseFullName, parseaddress, parsephone, (err, res) => {
       if (err) {
         console.log("The postCustomersData have an Error: ", err);
         // throw new Error("The postCustomersData have an Error: ", err);
 
       }
       response.writeHead(302, { 'Location': '/' });
-      response.end(parseFullName, parseAddress, parsePhone);
+      response.end(parseFullName, parseaddress, parsephone);
     });
   });
 };
