@@ -30,3 +30,14 @@ fetch("/getCustomersData")
   .catch(error => {
     console.log("This is an error: ", error);
   });
+
+  const signupButton = document.getElementById('signup');
+  signupButton.addEventListener('click', (event) => {
+    event.preventDefault();
+
+  })
+
+  const loginButton = document.getElementById('login');
+  loginButton.addEventListener('click', (event) => {
+    event.preventDefault();
+  })
