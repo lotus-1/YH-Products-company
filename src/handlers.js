@@ -2,6 +2,9 @@ const path = require("path");
 const fs = require("fs");
 const querystring = require("query-string");
 const url = require("url");
+//to store the data in a json file
+const Store = require('data-store')
+const db = new Store('db', { cwd: './' });
 
 const getCustomersData = require("./queries/getCustomersData.js");
 const postCustomersData = require("./queries/postCustomersData.js");

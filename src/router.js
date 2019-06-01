@@ -17,23 +17,55 @@ const router = (request, response) => {
   };
 };
 
-const cookiesLog = (req, res) => {
+const cookieLogin = (req, res) => {
   switch (`${req.method} ${req.url}`) {
-    case 'GET /':
-    return readFile('./index.html', (err, data) => {
-      res.writeHead(200, { 'Content-Type': 'text/html' });
-      res.end(data);
-    });
+    // case 'GET /':
+    //   return readFile('./index.html',
+    //     (err, data) => {
+    //       res.writeHead(200,{ 'Content-Type': 'text/html' });
+    //       return res.end(data);
+    //     }
+    //   );
     case 'post /login':
-    res.writeHead(302, { 'Location': '/', 'Set-Cookie': 'logged-_in=true; HttpOnly' });
-    res.end();
-
+      res.writeHead(302,{ 'Location': '/','Set-Cookie': 'logged_in=true; HttpOnly'});
+      return res.end();
+      default:
+        res.writeHead(404, { 'Content-Type': 'text/html' });
+        return res.end('<h1>Page not found</h1>');
+    }
+// const cookieLogOut =  (req, res) => {
+//   switch (`${req.method} ${req.url}`) {
     // case 'post /logout':
+    //   res.writeHead(
+    //     302,
+    //     {
+    //       'Location': '/',
+    //       'Set-Cookie': 'logged_in=0; Max-Age=0'
+    //     }
+    //   );
+    //   return res.end();
+//   }
 
-      break;
+const cookieSignUp = (req, res) => {
+  switch (`${req.method} ${req.url}`) {
+    case 'post /signup':
+      if (req.headers.cookie && req.headers.cookie.match(/logged_in=true/)) {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        return res.end('Logged in successfully!');
+      } else {
+        res.writeHead(401, { 'Content-Type': 'text/html' });
+        return res.end('Logged in falied!');
+      }
     default:
-
+      res.writeHead(404, { 'Content-Type': 'text/html' });
+      return res.end('<h1>Page not found</h1>');
+    }
   }
+
+
+module.exports = {
+  router,
+  cookieLogin,
+  cookieSignUp
 }
 
-module.exports = router;
