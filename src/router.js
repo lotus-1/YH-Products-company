@@ -1,4 +1,6 @@
 const handlers = require("./handlers");
+const { parse } = require('url');
+const { readFile } = require('fs');
 
 const router = (request, response) => {
   if (request.url === "/") {
