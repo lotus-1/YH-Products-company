@@ -1,5 +1,5 @@
 const dbConnection = require("../database/db_connection.js");
-
+console.log('post');
 const post = (full_name, address, phone, cb) => {
   console.log(`full_name= ${full_name}, address=${address}, phone=${phone}`);
   dbConnection.query(

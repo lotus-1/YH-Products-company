@@ -1,5 +1,5 @@
 const dbConnection = require("../database/db_connection.js");
-
+console.log('get');
 const get = cb => {
   dbConnection.query("SELECT * FROM customers", (err, res) => {
     console.log('get: ', res);
