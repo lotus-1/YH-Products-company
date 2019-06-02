@@ -2,7 +2,8 @@ const handlers = require("./handlers");
 const { parse } = require("url");
 const { readFile } = require("fs");
 console.log('router');
-const router = (request, response) => {
+const routerFun = (request, response) => {
+  console.log('router const');
   if (request.url === "/") {
     handlers.handlerHome(request, response);
   } else if (request.url.indexOf("/public") !== -1) {
@@ -18,6 +19,8 @@ const router = (request, response) => {
 };
 
 const cookieLogin = (req, res) => {
+  console.log('cookieLogin');
+
   switch (`${req.method} ${req.url}`) {
     // case 'GET /':
     //   return readFile('./index.html',
@@ -67,7 +70,7 @@ const cookieSignUp = (req, res) => {
 };
 
 module.exports = {
-  router,
+  routerFun,
   cookieLogin,
   cookieSignUp
 };
