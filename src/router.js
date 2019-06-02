@@ -7,9 +7,9 @@ const router = (request, response) => {
     handlers.handlerHome(request, response);
   } else if (request.url.indexOf("/public") !== -1) {
     handlers.handlerPublic(request, response, request.url);
-  } else if (request.url.indexOf("/getCustomersData") !== -1) {
+  } else if (request.url.indexOf("/get") !== -1) {
     handlers.handlerGetDB(response);
-  } else if (request.url.indexOf("/postCustomersData") !== -1) {
+  } else if (request.url.indexOf("/post") !== -1) {
     handlers.handlerPostDB(request, response);
   } else {
     response.writeHead(404, { "Content-Type": "text/html" });
@@ -59,7 +59,7 @@ const cookieSignUp = (req, res) => {
     default:
       res.writeHead(404, { 'Content-Type': 'text/html' });
       return res.end('<h1>Page not found</h1>');
-    }
+    };
   }
 
 

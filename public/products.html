@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="public/style.css"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title> Products </title>
+  </head>
+  <body>
+    <h1>Fill in your info to buy some of our products</h1>
+    <form id="form" class="form" action="/post" method="post">
+      <div id="label" class="label">
+        <label for="full_name">Full Name:</label>
+        <input id="full_name" type="text"  name="full_name" value="">
+        <label for="address">Address:</label>
+        <input id="address" type="text" name="address" value="">
+        <label for="phone">Phone:</label>
+        <input id="phone" type="number" name="phone" value="">
+      </div>
+      <button type="submit" id="button">Add to buy</button>
+
+      <table id=productsTable>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+    </form>
+
+    <script type="text/javascript" src="public/index.js"></script>
+  </body>
+</html>

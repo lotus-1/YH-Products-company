@@ -34,8 +34,5 @@ Oh, no worries, when logging in the cookie will be turned on, and when logging o
 
 Note: A cookie is a piece of data that your server, hosted on a certain domain (localhost, google.com etc) sends back to the browser, which the browser will then keep, and attach to every future request to that domain. An amazon.com cookie will not be attached to a request to an ebay.com domain, for example.
 
-sign up architecture:
-![picture](img/signup.16.02.jpeg)
-
-login architecture:
-![picture](img/login.17.09.jpeg)
+This is the architecture of our browser:
+![picture](img/architecture.jpeg)

@@ -8,7 +8,7 @@ const login = (req, res) => {
   });
   req.on('end', () => {
     const { email, password } = qs.parse(body)
-    queries.getCustomersData(email, (err, passwordInDb) => {
+    queries.get(email, (err, passwordInDb) => {
       if (err) {
         res.statusCode = 500;
         res.end('Error logging in...')
