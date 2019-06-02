@@ -5,5 +5,5 @@ const getProducts = cb => {
     cb(null, res.rows);
   });
 };
-
+console.log('dynamic');
 module.exports = getProducts;

@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 const url = require('url');
 require('dotenv').config();
-
+console.log('db connection');
 const DB_URL = process.env.DB_URL;
 
 if (!process.env.DB_URL)
