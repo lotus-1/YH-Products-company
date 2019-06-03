@@ -8,22 +8,29 @@
   </head>
   <body>
     <h1>Fill in your info to buy some of our products</h1>
-    <form id="form" class="form" action="/post" method="post">
+    <form id="form" class="form" action="./index.js" method="post">
       <div id="label" class="label">
         <label for="full_name">Full Name:</label>
-        <input id="full_name" type="text"  name="full_name" value="">
+        <input id="full_name" type="text"  name="full_name" value="" required/>
         <label for="address">Address:</label>
-        <input id="address" type="text" name="address" value="">
+        <input id="address" type="text" name="address" value="" required/>
         <label for="phone">Phone:</label>
-        <input id="phone" type="number" name="phone" value="">
+        <input id="phone" type="number" name="phone" value="" required/>
       </div>
       <button type="submit" id="button">Add to buy</button>
+      <table id="clientsTable">
+        <tr>
+          <th>full_name</th>
+          <th>address</th>
+          <th>phone</th>
+        </tr>
+      </table>
 
       <table id=productsTable>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>name</th>
+    <th>category</th>
+    <th>price</th>
   </tr>
     </form>
 

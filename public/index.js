@@ -8,7 +8,7 @@ fetch("/get")
   .then(data => {
     console.log("This is the data: ", data);
 
-    var table = document.getElementById("productsTable");
+    var table = document.getElementById("clientsTable");
     data.forEach(names => {
       var row = document.createElement("tr");
 
@@ -28,13 +28,38 @@ fetch("/get")
     });
   })
   .catch(error => {
-    console.log("This is an error: ", error);
+    console.log("This is an error in fetch of get: ", error);
   });
 
   const signLogButton = document.getElementById('signLog');
   signupButton.addEventListener('click', (event) => {
     event.preventDefault();
+    fetch('/static.js')
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      var table = document.getElementById("productsTable");
+      data.forEach(product => {
+        var row = document.createElement("tr");
 
+        var productName = document.createElement("td");
+        productName.textContent = product.name;
+        row.appendChild(productName);
 
+        var category = document.createElement("td");
+        category.textContent = product.category;
+        row.appendChild(category);
+
+        var price = document.createElement('td');
+        price.textContent = product.price;
+        row.appendChild(price);
+
+    })
+    .catch(error => {
+      console.log("This is an error in fetch of static: ", error);
+    });
+    })
   })
+  
 console.log('index.js');
